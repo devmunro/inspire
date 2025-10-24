@@ -2,8 +2,8 @@ from pydantic import BaseModel, constr, ConfigDict
 from typing import Optional
 
 class QuoteCreate(BaseModel):
-    text: constr(min_length=1, max_length=500)
-    author: Optional[constr(max_length=100)] = None
+    text: constr(strip_whitespace=True, min_length=1, max_length=500)
+    author: Optional[constr(strip_whitespace=True, max_length=100)] = None
 
     model_config = ConfigDict(
         json_schema_extra={
